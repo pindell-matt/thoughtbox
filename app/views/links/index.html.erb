@@ -2,8 +2,6 @@
 
 <%= render partial: "shared/link_form" %>
 
-<% @links.each do |link| %>
-  <ul>
-    <li><%= link.title %>: <%= link.url %></li>
-  </ul>
+<% unless @links.nil? %>
+  <%= render partial: "shared/links", locals: {links: @links} %>
 <% end %>
