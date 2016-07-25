@@ -1,0 +1,7 @@
+<div class='new_link_form'>
+  <%= form_for(:link, url: links_path) do |f| %>
+    <%= f.text_field :title, placeholder: "title" %>
+    <%= f.text_field :url, placeholder: "url" %>
+    <%= f.submit %>
+  <% end %>
+</div>
