@@ -1,0 +1,7 @@
+<nav class='navbar'>
+  <% if current_user %>
+    <%= link_to "Logout" %>
+  <% else %>
+    <%= link_to "Login" %>
+  <% end %>
+</nav>
