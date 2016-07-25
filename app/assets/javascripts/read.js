@@ -1,8 +1,6 @@
 'use_strict'
 
 $(document).ready(function(){
-  loadLinks;
-
   $('div').on('click', '.status', function(event){
     let link = $(this).parent()[0];
     let data = { id: link.id }
@@ -31,7 +29,8 @@ let loadLinks = $.getJSON('/api/v1/links').then(
 
 let updateLink = (data) => {
   let id = data.id;
-  $('#' + id).toggleClass("unread").toggleClass("read");
+  $('#' + id).toggleClass("unread")
+             .toggleClass("read");
 }
 
 let renderLink = (link) => {
@@ -45,8 +44,8 @@ let formatLink = (data) => {
       status = linkStatus(data);
 
   return html =
-    '<div class="link ' + status + '" id=' + data.id + '>' + title + ': ' + url + ' ' +
-    buttonFormat(data) + '</div>';
+    '<div class="link ' + status + '" id=' + data.id + '>' +
+    title + ': ' + url + ' ' + buttonFormat(data) + '</div>';
 }
 
 let buttonFormat = (data) => {
