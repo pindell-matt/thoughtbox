@@ -2,7 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "User can log in" do
   scenario "with valid email and password" do
-    user = User.create({email: "email@email.com", password: "password"})
+    visit new_user_path
+
+    within(".new_user_form") do
+      fill_in "email address", with: "fake@email.com"
+      fill_in "password", with: "password"
+      fill_in "confirm password", with: "password"
+      click_button("Sign Up")
+    end
+
+    within(".navbar") do
+      click_link("Log Out")
+    end
 
     visit root_path
 
@@ -15,8 +26,8 @@ RSpec.feature "User can log in" do
     end
 
     within(".new_session_form") do
-      fill_in "email address", with: user.email
-      fill_in "password", with: user.password
+      fill_in "email address", with: "fake@email.com"
+      fill_in "password", with: "password"
       click_button("Log In")
     end
 
@@ -30,13 +41,24 @@ RSpec.feature "User can log in" do
   end
 
   scenario "they can logout after logging in" do
-    user = User.create({email: "email@email.com", password: "password"})
+    visit new_user_path
+
+    within(".new_user_form") do
+      fill_in "email address", with: "fake@email.com"
+      fill_in "password", with: "password"
+      fill_in "confirm password", with: "password"
+      click_button("Sign Up")
+    end
+
+    within(".navbar") do
+      click_link("Log Out")
+    end
 
     visit login_path
 
     within(".new_session_form") do
-      fill_in "email address", with: user.email
-      fill_in "password", with: user.password
+      fill_in "email address", with: "fake@email.com"
+      fill_in "password", with: "password"
       click_button("Log In")
     end
 
