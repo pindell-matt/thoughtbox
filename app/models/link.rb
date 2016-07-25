@@ -5,6 +5,11 @@ class Link < ActiveRecord::Base
   validates :url, :title, presence: true
   validate :url_location
 
+  def flip_status
+    new_status = !read
+    self.update_attributes({read: new_status})
+  end
+
   private
     def url_location
       uri = URI.parse(url)

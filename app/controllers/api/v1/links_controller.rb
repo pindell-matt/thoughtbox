@@ -1,17 +1,13 @@
 class Api::V1::LinksController < Api::ApiController
-  respond_to :json
+  respond_to :json, :html
 
   def update
-    @link = Link.find(link_params[:id])
-    respond_with @link.update_attributes({read: !@link.read})
+    @link = Link.find(params[:id])
+    @link.flip_status
+    respond_with @link
   end
 
   def index
     respond_with Link.where(user_id: @current_user.id)
   end
-
-  private
-    def link_params
-      params.permit('id')
-    end
 end

@@ -1,7 +1,7 @@
 'use_strict'
 
 $(document).ready(function(){
-  loadLinks
+  loadLinks;
 
   $('div').on('click', '.status', function(event){
     let link = $(this).parent()[0];
@@ -9,11 +9,11 @@ $(document).ready(function(){
     let url = 'api/v1/links/' + link.id
 
     $.ajax({
-      method: 'PATCH',
+      method: 'PUT',
       url: url,
       data: data,
       dataType: 'JSON',
-      success: loadLinks,
+      success: updateLink(data),
       error: function(data){
         alert("Error updating Link " + link.id);
       }
@@ -29,6 +29,11 @@ let loadLinks = $.getJSON('/api/v1/links').then(
   }
 )
 
+let updateLink = (data) => {
+  let id = data.id;
+  $('#' + id).toggleClass("unread").toggleClass("read");
+}
+
 let renderLink = (link) => {
   let html = formatLink(link);
   appendLink(link.id, html);
@@ -41,13 +46,13 @@ let formatLink = (data) => {
 
   return html =
     '<div class="link ' + status + '" id=' + data.id + '>' + title + ': ' + url + ' ' +
-    buttonFormat(data) + '</div>'
+    buttonFormat(data) + '</div>';
 }
 
 let buttonFormat = (data) => {
   status = linkStatus(data);
   text = statusText(status);
-  return '<button class="status" value=' + data.id + '>Mark as ' + text + '</button>'
+  return '<button class="status" value=' + data.id + '>Mark as ' + text + '</button>';
 }
 
 let linkStatus = (data) => {
