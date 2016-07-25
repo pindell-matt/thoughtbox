@@ -19,8 +19,11 @@ ActiveRecord::Schema.define(version: 20160725163415) do
   create_table "links", force: :cascade do |t|
     t.string  "url"
     t.string  "title"
-    t.boolean "read",  default: false
+    t.boolean "read",    default: false
+    t.integer "user_id"
   end
+
+  add_index "links", ["user_id"], name: "index_links_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -30,4 +33,5 @@ ActiveRecord::Schema.define(version: 20160725163415) do
     t.datetime "updated_at",            null: false
   end
 
+  add_foreign_key "links", "users"
 end

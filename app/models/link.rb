@@ -1,6 +1,7 @@
 require 'uri'
 
 class Link < ActiveRecord::Base
+  belongs_to :user
   validates :url, :title, presence: true
   validate :url_location
 
@@ -11,5 +12,4 @@ class Link < ActiveRecord::Base
        errors.add(:url, "Not a valid URL")
      end
    end
-
 end
