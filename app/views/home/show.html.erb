@@ -1,1 +1,5 @@
-<p>test show</p>
+<% if @current_user %>
+  <p>welcome <%= @current_user.email %></p>
+<% else %>
+  <p>not logged in</p>
+<% end %>

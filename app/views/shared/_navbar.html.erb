@@ -1,7 +1,7 @@
 <nav class='navbar'>
-  <% if current_user %>
-    <%= link_to "Logout" %>
+  <% if @current_user %>
+    <%= link_to "Logout", logout_path, method: :delete %>
   <% else %>
-    <%= link_to "Log In" %> or <%= link_to "Sign Up" %>
+    <%= link_to "Log In", login_path %> or <%= link_to "Sign Up", new_user_path %>
   <% end %>
 </nav>
