@@ -1,0 +1,12 @@
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.text_field :username, placeholder: "Username" %>
+  <%= f.password_field :password, placeholder: "Password" %>
+
+  <span class="login-signup">
+    <%= f.submit "LOGIN", class:"slider-btn waves-effect waves-light btn" %>
+    or
+    <%= link_to "SIGN UP", new_volunteer_path, class:"slider-btn waves-effect waves-light btn"%>
+  </span>
+
+<% end %>
