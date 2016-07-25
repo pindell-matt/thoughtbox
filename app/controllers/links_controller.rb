@@ -11,6 +11,7 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to links_path
     else
+      flash.now[:error] = @link.errors[:url].first
       render :index
     end
   end
