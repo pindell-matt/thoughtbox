@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
+gem 'database_cleaner'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -22,6 +23,10 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'mocha'
+  gem 'shoulda'
 end
 
 group :development do
