@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "User can submit links" do
-  scenario "with valid urls" do
+RSpec.feature "User can update links" do
+  scenario "as read" do
     visit new_user_path
 
     within(".new_user_form") do
@@ -15,7 +15,8 @@ RSpec.feature "User can submit links" do
 
     within(".links") do
       expect(page).to_not have_text("Valid Link")
-      expect(page).to_not have_text("http://google.com")
+      expect(page).to_not have_link("http://google.com")
+      expect(page).to_not have_button("Mark as Read")
     end
 
     within(".new_link_form") do
@@ -28,11 +29,23 @@ RSpec.feature "User can submit links" do
 
     within(".links") do
       expect(page).to have_text("Valid Link")
-      expect(page).to have_text("http://google.com")
+      expect(page).to have_link("http://google.com")
+      expect(page).to have_button("Mark as Read")
+
+      click_button("Mark as Read")
     end
+
+    expect(page).to have_current_path('/links')
+
+    within(".links") do
+      expect(page).to have_text("Valid Link")
+      expect(page).to have_link("http://google.com")
+      expect(page).to have_button("Mark as Unread")
+    end
+
   end
 
-  scenario "not with invalid urls" do
+  xscenario "not with invalid urls" do
     visit new_user_path
 
     within(".new_user_form") do
@@ -46,7 +59,7 @@ RSpec.feature "User can submit links" do
 
     within(".links") do
       expect(page).to_not have_text("Invalid Link")
-      expect(page).to_not have_text("http://google.com")
+      expect(page).to_not have_link("http://google.com")
     end
 
     within(".new_link_form") do
@@ -62,6 +75,6 @@ RSpec.feature "User can submit links" do
     end
 
     expect(page).to_not have_text("Invalid Link")
-    expect(page).to_not have_text("http://google.com")
+    expect(page).to_not have_link("http://google.com")
   end
 end

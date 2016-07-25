@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   get  '/links', to: 'links#index'
   post '/links', to: 'links#create'
 
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :links, only: [:update, :index]
+    end
+  end
+
 end

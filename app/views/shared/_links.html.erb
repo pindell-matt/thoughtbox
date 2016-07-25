@@ -1,7 +1,17 @@
 <div class='links'>
-  <% @links.each do |link| %>
+  <ul>
+  </ul>
+  <!-- <% @links.each do |link| %>
     <ul>
-      <li><%= link.title %>: <a href=<%= link.url %>><%= link.url %></a></li>
+      <li class='link'>
+        <% if link.read %>
+          <div class='read' id=<%= link.id %>><%= link.title %>: <a href=<%= link.url %>><%= link.url %></a>
+          <button class='status' value=<%=link.id %>>Mark as Unread</button></div>
+        <% else %>
+          <div class='unread' id=<%= link.id %>><%= link.title %>: <a href=<%= link.url %>><%= link.url %></a>
+          <button class='status' value=<%=link.id %>>Mark as Read</button></div>
+        <% end %>
+      </li>
     </ul>
-  <% end %>
+  <% end %> -->
 </div>
