@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to links_path
     else
-      render '/users/new'
+      render :new
     end
   end
 
