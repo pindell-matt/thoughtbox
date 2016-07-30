@@ -28,6 +28,7 @@ group :development, :test do
   gem 'launchy'
   gem 'mocha'
   gem 'shoulda'
+  gem 'selenium-webdriver'
 end
 
 group :development do

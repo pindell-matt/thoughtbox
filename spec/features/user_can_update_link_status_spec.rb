@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User can update links" do
+RSpec.feature "User can update links", js: true do
   scenario "as read" do
     visit new_user_path
 
@@ -15,7 +15,7 @@ RSpec.feature "User can update links" do
 
     within(".links") do
       expect(page).to_not have_text("Valid Link")
-      expect(page).to_not have_link("http://google.com")
+      expect(page).to_not have_text("http://google.com")
       expect(page).to_not have_button("Mark as Read")
     end
 
@@ -29,7 +29,7 @@ RSpec.feature "User can update links" do
 
     within(".links") do
       expect(page).to have_text("Valid Link")
-      expect(page).to have_link("http://google.com")
+      expect(page).to have_text("http://google.com")
       expect(page).to have_button("Mark as Read")
 
       click_button("Mark as Read")
@@ -39,7 +39,7 @@ RSpec.feature "User can update links" do
 
     within(".links") do
       expect(page).to have_text("Valid Link")
-      expect(page).to have_link("http://google.com")
+      expect(page).to have_text("http://google.com")
       expect(page).to have_button("Mark as Unread")
     end
 
@@ -59,7 +59,7 @@ RSpec.feature "User can update links" do
 
     within(".links") do
       expect(page).to_not have_text("Invalid Link")
-      expect(page).to_not have_link("http://google.com")
+      expect(page).to_not have_text("http://google.com")
     end
 
     within(".new_link_form") do
@@ -75,6 +75,6 @@ RSpec.feature "User can update links" do
     end
 
     expect(page).to_not have_text("Invalid Link")
-    expect(page).to_not have_link("http://google.com")
+    expect(page).to_not have_text("http://google.com")
   end
 end

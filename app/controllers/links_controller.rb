@@ -1,13 +1,13 @@
 class LinksController < ApplicationController
 
   def index
-    @link = Link.new
-    @links = Link.where(user_id: @current_user.id)
+    @link = current_user.links.new
+    @links = current_user.links
   end
 
   def create
     @link = Link.new(link_params)
-    @link.user_id = @current_user.id
+    @link.user_id = current_user.id
     if @link.save
       redirect_to links_path
     else

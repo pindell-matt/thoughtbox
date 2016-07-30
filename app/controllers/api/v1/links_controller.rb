@@ -8,6 +8,14 @@ class Api::V1::LinksController < Api::ApiController
   end
 
   def index
-    respond_with Link.where(user_id: @current_user.id)
+    if current_user
+      respond_with current_user.links
+    else
+      respond_with []
+    end
+    # @links = current_user.links
+    # respond_with @links
+    # respond_with current_user.links
+    # respond_with Link.where(user_id: current_user.id)
   end
 end
