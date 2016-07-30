@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get  '/users/new', to: 'users#new', as: :new_user
   post '/users',     to: 'users#create'
 
-  get  '/links', to: 'links#index'
-  post '/links', to: 'links#create'
+  resources :links, only: [:index, :create, :edit, :update]
+  # get  '/links',     to: 'links#index'
+  # post '/links',     to: 'links#create'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do

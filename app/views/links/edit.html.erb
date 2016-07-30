@@ -1,4 +1,6 @@
-<%= form_for(:link, url: links_path) do |f| %>
+<h1>Edit your Link</h1>
+
+<%= form_for(@link, url: link_path) do |f| %>
   <%= f.text_field :title, placeholder: "title" %>
   <%= f.text_field :url, placeholder: "url" %>
   <%= f.submit %>

@@ -1,6 +1,8 @@
 <h1>Links Index</h1>
 
-<%= render partial: "shared/link_form" %>
+<div class='new_link_form'>
+  <%= render partial: "shared/link_form" %>
+</div>
 
 <% unless @links.nil? %>
   <%= render partial: "shared/links", locals: {links: @links} %>
