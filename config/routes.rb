@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   post '/users',     to: 'users#create'
 
   resources :links, only: [:index, :create, :edit, :update]
-  # get  '/links',     to: 'links#index'
-  # post '/links',     to: 'links#create'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do

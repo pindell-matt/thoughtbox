@@ -52,13 +52,17 @@ let formatLink = (data) => {
 
   return html =
     '<div class="link ' + status + '" id=' + data.id + '>' +
-    title + ': ' + url + ' ' + buttonFormat(data) + '</div>';
+    title + ': ' + url + ' ' + statusButton(data) + editButton(data) +'</div>';
 }
 
-let buttonFormat = (data) => {
+let statusButton = (data) => {
   status = linkStatus(data);
   text = statusText(status);
   return '<button class="status" value=' + data.id + '>Mark as ' + text + '</button>';
+}
+
+let editButton = (data) => {
+  return '<a href="/links/' + data.id + '/edit"><button class="edit">Edit</button></a>';
 }
 
 let linkStatus = (data) => {
