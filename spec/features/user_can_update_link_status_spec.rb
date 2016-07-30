@@ -45,7 +45,7 @@ RSpec.feature "User can update links", js: true do
 
   end
 
-  xscenario "not with invalid urls" do
+  scenario "not with invalid urls" do
     visit new_user_path
 
     within(".new_user_form") do
