@@ -29,8 +29,15 @@ let loadLinks = $.getJSON('/api/v1/links').then(
 
 let updateLink = (data) => {
   let id = data.id;
-  $('#' + id).toggleClass("unread")
-             .toggleClass("read");
+  let idea = $('#' + id)
+  idea.toggleClass("unread")
+      .toggleClass("read");
+
+  // refactor
+  let button = idea.children('.status')
+  let map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
+  let newStatus = map[button.html()]
+  button.html(`${newStatus}`)
 }
 
 let renderLink = (link) => {
