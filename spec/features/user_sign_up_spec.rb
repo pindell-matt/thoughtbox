@@ -28,14 +28,13 @@ RSpec.feature "User can sign up" do
     end
   end
 
-  xscenario "user passwords must match" do
+  scenario "user passwords must match" do
     visit root_path
 
     within(".navbar") do
       expect(page).to have_link("Log In")
       expect(page).to have_link("Sign Up")
       expect(page).to_not have_link("Log Out")
-
       click_link("Sign Up")
     end
 
@@ -46,12 +45,12 @@ RSpec.feature "User can sign up" do
       click_button("Sign Up")
     end
 
-    expect(page).to have_current_path('/users/new')
+    expect(page).to_not have_current_path('/links')
 
     within(".navbar") do
-      expect(page).to_not have_link("Log In")
-      expect(page).to_not have_link("Sign Up")
-      expect(page).to have_link("Log Out")
+      expect(page).to have_link("Log In")
+      expect(page).to have_link("Sign Up")
+      expect(page).to_not have_link("Log Out")
     end
   end
 end

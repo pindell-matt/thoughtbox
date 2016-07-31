@@ -3,8 +3,12 @@ require 'uri'
 class Link < ActiveRecord::Base
   belongs_to :user
   validates :url, :title, presence: true
-  validates_uniqueness_of :title
   validate :url_location
+
+  def flip_status
+    new_status = !read
+    self.update_attributes({read: new_status})
+  end
 
   private
     def url_location
