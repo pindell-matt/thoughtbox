@@ -1,7 +1,7 @@
 class Link < ActiveRecord::Base
   belongs_to :user
   validates :url, :title, presence: true
-  validates_with UrlValidator
+  validates :url, url: true
 
   def flip_status
     new_status = !read
