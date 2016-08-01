@@ -1,7 +1,9 @@
 <h1>Edit Link</h1>
 
-<%= form_for(@link, url: link_path) do |f| %>
-  <%= f.text_field :title, placeholder: "title" %>
-  <%= f.text_field :url, placeholder: "url" %>
-  <%= f.submit %>
-<% end %>
+<div class='edit_link_form'>
+  <%= form_for(@link, url: link_path) do |f| %>
+    <%= f.text_field :title, placeholder: "title" %>
+    <%= f.text_field :url, placeholder: "url" %>
+    <%= f.submit %>
+  <% end %>
+</div>

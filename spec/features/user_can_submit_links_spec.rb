@@ -58,7 +58,7 @@ RSpec.feature "User can submit links", js: true do
     expect(page).to have_current_path('/links')
 
     within('.flash') do
-      expect(page).to have_text("Not a valid URL")
+      expect(page).to have_text("is an invalid URL")
     end
 
     expect(page).to_not have_text("Invalid Link")
