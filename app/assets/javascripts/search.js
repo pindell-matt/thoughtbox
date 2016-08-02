@@ -1,11 +1,11 @@
 $(document).ready(function(){
   $('#search').on('keyup', function() {
-    var text = $(this).val().toLowerCase()
-    var matches = []
+    var text = $(this).val().toLowerCase();
+    var matches = [];
     var nonMatches = [];
 
     $('.link').each(function () {
-      var title = $(this).children('.title').html()
+      var title = $(this).children('.title').html();
       var url = $(this).html().split(" ")[2];
 
       if (title.includes(text) || url.includes(text)) {

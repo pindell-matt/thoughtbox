@@ -36,8 +36,8 @@ var updateLink = function(data) {
 }
 
 var updateLinkButton = function(idea) {
-  var button = idea.children('.status')
-  var map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
+  var button = idea.children('.status');
+  var map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" };
   var newStatus = map[button.html()];
   button.html(newStatus)
 }
