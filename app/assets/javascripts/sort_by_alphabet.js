@@ -1,13 +1,11 @@
-'use_strict'
-
 $(document).ready(function(){
-  $('#alphabetic').on('click', () => {
-    let $ul = $('ul')
-        links = $ul.children();
+  $('#alphabetic').on('click', function() {
+    var $ul = $('ul');
+    var links = $ul.children();
 
     links.sort(function(t1, t2) {
-      let title1 = $(t1).children('div, .title').html()
-          title2 = $(t2).children('div, .title').html();
+      var title1 = $(t1).children('div, .title').html();
+      var title2 = $(t2).children('div, .title').html();
       return title1.localeCompare(title2);
     });
 
