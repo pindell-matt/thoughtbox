@@ -1,7 +1,9 @@
 <h1>Links Index</h1>
 
-<%= render partial: "shared/link_form" %>
+<%= render partial: 'shared/link_form' %>
+
+<%= render partial: 'shared/filters' %>
 
 <% if current_user.links %>
-  <%= render partial: "shared/links", locals: { links: @links } %>
+  <%= render partial: 'shared/links', locals: { links: @links } %>
 <% end %>
