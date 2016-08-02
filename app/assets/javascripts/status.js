@@ -1,10 +1,10 @@
 'use_strict'
 
-$(document).ready(function(){
-  $('div').on('click', '.status', function(event){
-    let link = $(this).parent()[0];
-    let data = { id: link.id }
-    let url = 'api/v1/links/' + link.id
+$(document).ready(function() {
+  $('div').on('click', '.status', function(event) {
+    let link = $(this).parent()[0]
+        data = { id: link.id }
+        url = 'api/v1/links/' + link.id;
 
     $.ajax({
       method: 'PUT',
@@ -29,14 +29,16 @@ let loadLinks = $.getJSON('/api/v1/links').then(
 
 let updateLink = (data) => {
   let id = data.id;
-  let idea = $('#' + id)
+      idea = $('#' + id);
+  updateLinkButton(idea);
   idea.toggleClass("unread")
       .toggleClass("read");
+}
 
-  // refactor
+let updateLinkButton = (idea) => {
   let button = idea.children('.status')
-  let map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
-  let newStatus = map[button.html()]
+      map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
+      newStatus = map[button.html()];
   button.html(`${newStatus}`)
 }
 
