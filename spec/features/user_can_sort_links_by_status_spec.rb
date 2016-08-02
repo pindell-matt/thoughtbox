@@ -32,9 +32,9 @@ RSpec.feature 'User can sort links by status', js: true do
     end
 
     within('.links') do
-      expect(page).to have_text('Z Link')
-      expect(page).to have_text('A Link')
       expect(page).to have_text('B Link')
+      expect(page).to have_text('A Link')
+      expect(page).to have_text('Z Link')
     end
 
     within('.links') do
@@ -46,9 +46,9 @@ RSpec.feature 'User can sort links by status', js: true do
     end
 
     within('.links') do
-      expect(page).to have_text('Z Link')
+      expect(page).to have_text('B Link')
       expect(page).to_not have_text('A Link')
-      expect(page).to_not have_text('B Link')
+      expect(page).to_not have_text('Z Link')
     end
 
     within('.filters') do
@@ -107,9 +107,9 @@ RSpec.feature 'User can sort links by status', js: true do
     end
 
     within('.links') do
-      expect(page).to_not have_text('Z Link')
+      expect(page).to_not have_text('B Link')
       expect(page).to have_text('A Link')
-      expect(page).to have_text('B Link')
+      expect(page).to have_text('Z Link')
     end
 
     within('.filters') do

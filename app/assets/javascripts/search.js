@@ -1,14 +1,12 @@
-'use_strict'
-
 $(document).ready(function(){
   $('#search').on('keyup', function() {
-    let text = $(this).val().toLowerCase()
-        matches = []
-        nonMatches = [];
+    var text = $(this).val().toLowerCase()
+    var matches = []
+    var nonMatches = [];
 
     $('.link').each(function () {
-      let title = $(this).children('.title').html()
-          url = $(this).html().split(" ")[2];
+      var title = $(this).children('.title').html()
+      var url = $(this).html().split(" ")[2];
 
       if (title.includes(text) || url.includes(text)) {
         matches.push($(this));

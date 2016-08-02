@@ -2,9 +2,9 @@
 
 $(document).ready(function() {
   $('div').on('click', '.status', function(event) {
-    let link = $(this).parent()[0]
-        data = { id: link.id }
-        url = 'api/v1/links/' + link.id;
+    var link = $(this).parent()[0];
+    var data = { id: link.id };
+    var url = 'api/v1/links/' + link.id;
 
     $.ajax({
       method: 'PUT',
@@ -19,38 +19,38 @@ $(document).ready(function() {
   })
 })
 
-let loadLinks = $.getJSON('/api/v1/links').then(
-  (response) => {
-    $.each(response, (index, link) => {
+var loadLinks = $.getJSON('/api/v1/links').then(
+  function(response) {
+    $.each(response, function(index, link) {
       renderLink(link);
     })
   }
 )
 
-let updateLink = (data) => {
-  let id = data.id;
-      idea = $('#' + id);
+var updateLink = function(data) {
+  var id = data.id;
+  var idea = $('#' + id);
   updateLinkButton(idea);
   idea.toggleClass("unread")
       .toggleClass("read");
 }
 
-let updateLinkButton = (idea) => {
-  let button = idea.children('.status')
-      map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
-      newStatus = map[button.html()];
+var updateLinkButton = function(idea) {
+  var button = idea.children('.status')
+  var map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" }
+  var newStatus = map[button.html()];
   button.html(`${newStatus}`)
 }
 
-let renderLink = (link) => {
-  let html = formatLink(link);
+var renderLink = function(link) {
+  var html = formatLink(link);
   appendLink(link.id, html);
 }
 
-let formatLink = (data) => {
-  let title = data.title,
-      url = data.url,
-      status = linkStatus(data);
+var formatLink = function(data) {
+  var title = data.title;
+  var url = data.url;
+  var status = linkStatus(data);
 
   return html =
     '<div class="link ' + status + ' ' + '" id=' + data.id + '>' +
@@ -58,25 +58,25 @@ let formatLink = (data) => {
     url + ' ' + statusButton(data) + editButton(data) +'</div>';
 }
 
-let statusButton = (data) => {
-  status = linkStatus(data);
-  text = statusText(status);
+var statusButton = function(data) {
+  var status = linkStatus(data);
+  var text = statusText(status);
   return '<button class="status" value=' + data.id + '>Mark as ' + text + '</button>';
 }
 
-let editButton = (data) => {
+var editButton = function(data) {
   return '<a href="/links/' + data.id + '/edit"><button class="edit">Edit</button></a>';
 }
 
-let linkStatus = (data) => {
+var linkStatus = function(data) {
   if (data.read) { return 'read' } else { return 'unread' };
 }
 
-let statusText = (status) => {
+var statusText = function(status) {
   if (status === 'read') { return 'Unread' } else { return 'Read' };
 }
 
-let appendLink = (id, html) => {
+var appendLink = function(id, html) {
   $( ".links ul" ).prepend(
     '<li>' + html + '</li>'
   );
