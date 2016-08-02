@@ -51,8 +51,9 @@ let formatLink = (data) => {
       status = linkStatus(data);
 
   return html =
-    '<div class="link ' + status + '" id=' + data.id + '>' +
-    title + ': ' + url + ' ' + statusButton(data) + editButton(data) +'</div>';
+    '<div class="link ' + status + ' ' + '" id=' + data.id + '>' +
+    '<span class="title">' + title + "</span>" + ': ' +
+    url + ' ' + statusButton(data) + editButton(data) +'</div>';
 }
 
 let statusButton = (data) => {
