@@ -2,10 +2,10 @@
 
 <input id="search" placeholder="Search Links">
 
-<%= render partial: 'shared/link_form' %>
+<%= render partial: 'link_form' %>
 
-<%= render partial: 'shared/filters' %>
+<%= render partial: 'filters' %>
 
 <% if current_user.links %>
-  <%= render partial: 'shared/links', locals: { links: @links } %>
+  <%= render partial: 'links', locals: { links: @links } %>
 <% end %>
