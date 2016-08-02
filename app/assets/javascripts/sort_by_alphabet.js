@@ -6,8 +6,8 @@ $(document).ready(function(){
         links = $ul.children();
 
     links.sort(function(t1, t2) {
-      let title1 = $(t1).children('div, .title').html();
-      let title2 = $(t2).children('div, .title').html();
+      let title1 = $(t1).children('div, .title').html()
+          title2 = $(t2).children('div, .title').html();
       return title1.localeCompare(title2);
     });
 
