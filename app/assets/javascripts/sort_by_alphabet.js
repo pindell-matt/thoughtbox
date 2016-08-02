@@ -11,6 +11,6 @@ $(document).ready(function(){
       return title1.localeCompare(title2);
     })
 
-    $.each(links, function(i, l) { $ul.append(l); });
+    $.each(links, function(index, link) { $ul.append(link); });
   });
 })
