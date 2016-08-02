@@ -37,7 +37,10 @@ var updateLink = function(data) {
 
 var updateLinkButton = function(idea) {
   var button = idea.children('.status');
-  var map = { "Mark as Unread": "Mark as Read", "Mark as Read": "Mark as Unread" };
+  var map = {
+             "Mark as Unread": "Mark as Read",
+             "Mark as Read": "Mark as Unread"
+            };
   var newStatus = map[button.html()];
   button.html(newStatus)
 }
@@ -61,11 +64,13 @@ var formatLink = function(data) {
 var statusButton = function(data) {
   var status = linkStatus(data);
   var text = statusText(status);
-  return '<button class="status" value=' + data.id + '>Mark as ' + text + '</button>';
+  return '<button class="status" value=' +
+    data.id + '>Mark as ' + text + '</button>';
 }
 
 var editButton = function(data) {
-  return '<a href="/links/' + data.id + '/edit"><button class="edit">Edit</button></a>';
+  return '<a href="/links/' + data.id + '/edit">' +
+    '<button class="edit">Edit</button></a>';
 }
 
 var linkStatus = function(data) {
