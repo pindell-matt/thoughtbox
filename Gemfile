@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'database_cleaner'
 gem 'responders'
 gem 'valid_url'
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 gem 'unicorn'
