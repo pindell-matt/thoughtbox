@@ -13,9 +13,5 @@ class Api::V1::LinksController < Api::ApiController
     else
       respond_with []
     end
-    # @links = current_user.links
-    # respond_with @links
-    # respond_with current_user.links
-    # respond_with Link.where(user_id: current_user.id)
   end
 end
